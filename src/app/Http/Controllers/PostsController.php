@@ -17,22 +17,23 @@ class PostsController extends BaseController
 
     // ページの表示
     public function create() {
-        return view('infoform');
+
+        // DB（MySQL）からinfoテーブルの全件取得結果
+        $infos = DB::select('select * from info');
+        $data = ['infos' => $infos];
+
+        return view('infoform',$data);
     }
 
     // post送信
     public function add(Request $request) {
-        
-        // $post = new Post();
-        // $post->title = $request->title;
-        // $post->body = $request->body;
-        // $post->save();
-        
+                
         $param = [
             'title' => $request->title,
             'content' => $request->body
         ];
 
+        // formの入力情報をDB登録
         DB::insert('insert into info (title, content) values (:title, :content)', $param);
 
         return redirect('/info');

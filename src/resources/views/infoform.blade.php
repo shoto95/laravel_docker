@@ -4,6 +4,20 @@
   <!-- <link rel="stylesheet" href="/css/style.css"> -->
 </head>
 
+  <!-- MySQLから出力した結果を表形式 -->
+<table border="1">
+    <tr>
+        <th>title</th>
+        <th>content</th>
+    </tr>
+    @foreach ($infos as $info)
+    <tr>
+        <td>{{ $info->title }}</td>
+        <td>{{ $info->content }}</td>
+    </tr>
+    @endforeach
+</table>
+
 <form method="post" action="{{ url('/info') }}">
     {{ csrf_field() }}
     <p>
