@@ -28,3 +28,5 @@ Route::get('/hello/{name}', function ($name) {
 // });
 Route::get('/info', [PostsController::class, 'create']);
 Route::post('/info', [PostsController::class, 'add']);
+// infoの削除
+Route::post('/info/delete/{id}', [PostsController::class, 'delete']);

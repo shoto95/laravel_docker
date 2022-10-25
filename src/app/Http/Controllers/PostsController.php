@@ -38,4 +38,14 @@ class PostsController extends BaseController
 
         return redirect('/info');
     }
+
+    // infoの削除
+    public function delete($title) {
+
+        // 対象のinfo削除
+        $deleted = DB::delete('delete from info where title = ?',[$title]);
+
+        return redirect('/info');
+    }
+    
 }

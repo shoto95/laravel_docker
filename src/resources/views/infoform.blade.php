@@ -9,11 +9,18 @@
     <tr>
         <th>title</th>
         <th>content</th>
+        <th>delete</th>
     </tr>
     @foreach ($infos as $info)
     <tr>
         <td>{{ $info->title }}</td>
         <td>{{ $info->content }}</td>
+        <td>
+          <form action="/info/delete/{{$info->title}}" method="POST">
+          {{ csrf_field() }}
+          <input type="submit" class="btn btn-danger btn-dell" value="削除">
+          </form>
+        </td>
     </tr>
     @endforeach
 </table>
